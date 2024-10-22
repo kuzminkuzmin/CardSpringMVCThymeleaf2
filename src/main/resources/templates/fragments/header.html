@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="eng"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <nav class="navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" style="">
+                <a class="navbar-brand" th:href="@{/}">Cards</a>
+                <ul class="nav navbar-nav">
+                    <div style="display: inline-block; padding-top: 16px; align-content: center" th:if="${user != null}">
+                        <div style="display: inline-block"><a style="color: #e2e2e2" href="#" th:href="@{/new/category}">New category</a></div>
+                    </div>
+                    <div style="display: inline-block; margin-left: 24px; padding-top: 16px; align-content: center" th:if="${user != null}">
+                        <div style="display: inline-block"><a style="color: #e2e2e2" href="#" th:href="@{/logout}">Log out</a></div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <table class="table table-bordered table-hover horizontal-align">
+        <tbody>
+        <tr th:each="category : ${user.categories}">
+            <table>
+                <thead>
+                <tr>
+                    <th colspan="5" style="text-align: left; background-color: #e2e2e2">
+                        <div style="align-content: center">
+                            <p style="color: red" th:if="${errorCategory}" th:text="${errorCategory}"></p>
+                            <div style="display: inline-block; font-size: 20px; margin-right: 12px" th:text="${category.name}">CategoryName</div>
+                            <div style="display: inline-block; font-size: 12px; font-weight: bold; color: #2e6da4"><a href="#" th:href="@{'/new/card/{categoryId}'(categoryId=${category.id})}">add card</a></div>
+                            <div style="display: inline-block; margin-left: 4px"><a th:href="@{'/editCategory/{id}'(id=${category.id})}"><i class="fa fa-edit"
+                                                                                            style="font-size: 16px"></i></a></div>
+                            <div style="display: inline-block; margin-left: 4px"><a th:href="@{'/deleteCategory/{id}'(id=${category.id})}"><i class="fa fa-trash"
+                                                                                              style="font-size: 16px"></i></a></div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; font-size: 11px; color: #999999; background-color: #eeeeee">Question</th>
+                    <th style="text-align: left; font-size: 11px; color: #999999; background-color: #eeeeee">Answer</th>
+                    <th style="width: 10%; text-align: left; font-size: 11px; color: #999999; background-color: #eeeeee">Creation date</th>
+                    <th style="width: 5%; text-align: center; font-size: 11px; color: #999999; background-color: #eeeeee">Edit</th>
+                    <th style="width: 5%; text-align: center; font-size: 11px; color: #999999; background-color: #eeeeee">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="card : ${category.cards}">
+                    <td th:text="${card.question}">Question</td>
+                    <td th:text="${card.answer}">Answer</td>
+                    <td th:text="${card.date}">Date</td>
+                    <td style="text-align: center"><a th:href="@{'/editCard/{id}'(id=${card.id})}"><i class="fa fa-edit"
+                                                                                                      style="font-size: 20px"></i></a></td>
+                    <td style="text-align: center"><a th:href="@{'/deleteCard/{id}'(id=${card.id})}"><i
+                            class="fa fa-trash" style="font-size: 20px"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+
+</body>
+</html>

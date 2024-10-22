@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+  <div th:replace="fragments/header :: header"></div>
+  <div class="container">
+    <form class="form-horizontal" th:action="@{/registration/register}" name="input_form" id="input-form" method="post" role="form">
+      <div class="form-group">
+        <input type="text" class="form-control" id="login" th:name="login" placeholder="Login"/>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="password" th:name="password" placeholder="Password"/>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" th:name="name" placeholder="Name"/>
+      </div>
+      <p style="color: red" th:if="${error}" th:text="${error}"></p>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <p><a href="#" th:href="@{/login}">log in</a></p>
+    </form>
+  </div>
+  <div th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+</html>
